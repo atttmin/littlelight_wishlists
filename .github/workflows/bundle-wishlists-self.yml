@@ -1,0 +1,30 @@
+name: Bundle Wishlists
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Create wishlist bundles
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run bundler
+
+    - name: Generate DIM wishlist files
+      run: python3 convert_to_dim.py
+    
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: rebuilt bundles + DIM wishlists
+        push_options: '--force'
+        commit_user_name: atttmin
+        commit_user_email: atttmin@users.noreply.github.com
