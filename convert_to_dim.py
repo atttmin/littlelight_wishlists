@@ -5,25 +5,29 @@
 
 import json, re, os
 
-BASE_DIR = "/tmp/littlelight_wishlists"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # ========== 1. 从旧 DIM 文件提取武器名映射 ==========
 old_dim_path = os.path.join(BASE_DIR, "curators/virpyre/dim/DIMseasonal.txt")
-with open(old_dim_path) as f:
-    old_dim = f.read()
-
-weapon_name_map = {}
-cur_weapon = None
-for line in old_dim.split('\n'):
-    m = re.match(r'^//\s*(.+?)\s*\((god-pve|god-pvp|pve|pvp)\)$', line)
-    if m:
-        cur_weapon = m.group(1).strip()
-        continue
-    m2 = re.match(r'dimwishlist:item=(\d+)', line)
-    if m2 and cur_weapon:
-        weapon_name_map[int(m2.group(1))] = cur_weapon
-
-print(f"从旧 DIM 提取了 {len(weapon_name_map)} 个武器名映射")
+try:
+    with open(old_dim_path) as f:
+        old_dim = f.read()
+    
+    weapon_name_map = {}
+    cur_weapon = None
+    for line in old_dim.split('\n'):
+        m = re.match(r'^//\s*(.+?)\s*\((god-pve|god-pvp|pve|pvp)\)$', line)
+        if m:
+            cur_weapon = m.group(1).strip()
+            continue
+        m2 = re.match(r'dimwishlist:item=(\d+)', line)
+        if m2 and cur_weapon:
+            weapon_name_map[int(m2.group(1))] = cur_weapon
+    
+    print(f"从旧 DIM 提取了 {len(weapon_name_map)} 个武器名映射")
+except FileNotFoundError:
+    print("注意: 未找到旧 DIM 文件，武器名将显示为 hash")
+    weapon_name_map = {}
 
 # ========== 2. 标签映射 ==========
 TAG_MAP = {
