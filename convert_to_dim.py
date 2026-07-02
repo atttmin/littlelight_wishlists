@@ -39,11 +39,7 @@ TAG_MAP = {
 
 # ========== 3. 加载所有 Season 数据（MNK 和 Controller）==========
 mnk_files = [
-    "Season8.json", "Season9-10.json", "Season11.json", "Season12.json",
-    "Season13.json", "Season14.json", "Season15.json", "Season16.json",
-    "Season17.json", "Season18.json", "Season19.json", "Season20.json",
-    "Season21.json", "Season22.json", "Season23.json", "Season24.json",
-    "Season25.json", "Season26.json", "Season27.json", "Season28.json",
+    "Season28.json",
 ]
 controller_files = mnk_files[:]  # 同样文件名
 
@@ -149,7 +145,7 @@ write_dim_file(
     mnk_lines,
     os.path.join(BASE_DIR, "deliverables/virpyre-dim-mnk.txt"),
     "virpyre's DIM Wishlist (MNK)",
-    "virpyre's recommendations through Seasons 8-28 (Mouse/Keyboard)."
+    "virpyre's recommendations for Season 28 (Mouse/Keyboard)."
 )
 
 # Controller 版本
@@ -157,7 +153,7 @@ write_dim_file(
     ctrl_lines,
     os.path.join(BASE_DIR, "deliverables/virpyre-dim-controller.txt"),
     "virpyre's DIM Wishlist (Controller)",
-    "virpyre's recommendations through Seasons 8-28 (Controller)."
+    "virpyre's recommendations for Season 28 (Controller)."
 )
 
 # 合并版
@@ -166,7 +162,7 @@ write_dim_file(
     all_lines,
     os.path.join(BASE_DIR, "deliverables/virpyre-dim-all.txt"),
     "virpyre's DIM Wishlist (All)",
-    "virpyre's recommendations through Seasons 8-28 (MNK + Controller)."
+    "virpyre's recommendations for Season 28 (MNK + Controller)."
 )
 
 print("\n✅ 转换完成！")
