@@ -10,3 +10,6 @@ This repo hosts wishlists for Little Light
 
 # How to contribute
 check [here](CONTRIBUTING.md)
+
+
+onle use for myself
