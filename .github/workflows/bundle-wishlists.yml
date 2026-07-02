@@ -28,8 +28,3 @@ jobs:
         push_options: '--force'
         commit_user_name: atttmin
         commit_user_email: atttmin@users.noreply.github.com
-      with:
-        commit_message: rebuilt bundles + DIM wishlists
-        push_options: '--force'
-        commit_user_name: Little Light Bot
-        commit_user_email: jao+markezine.me
